@@ -88,32 +88,6 @@ body{
   color: #637589;
 }
 
-header{
-  position: relative;
-  display: flex;
-}
-
-.header-left{
-  display: flex;
-  align-items: center;
-  flex: 1 0 0;
-}
-
-.header-plant{
-  height: 262px;
-  margin-top: -113px;
-  transform: matrix(1, 0, 0, -1, 0, 0);
-}
-.header-title{
-  margin-left: -3em;
-}
-.header-monograma{
-  margin-right: 2em;
-}
-.header-title p{
-  font-size: 14px;
-}
-
 .calligraphy{
   color: #C3AD72;
   font-family: 'Cherolina', cursive;
@@ -124,11 +98,7 @@ header{
 
 .container{
   display: flex;
-  max-width: 1382px;
-  margin: auto 2em;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 32px;
 }
 
 .sidebar{
@@ -136,6 +106,22 @@ header{
   flex: 1 0 208px;
   display: flex;
   flex-direction: column;
+  padding-left: 2em;
+}
+
+nav{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-plant{
+  height: 262px;
+  margin-top: -113px;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  margin-left: -2em;
+  margin-bottom: 2em;
+
 }
 
 nav h6{
@@ -144,7 +130,8 @@ nav h6{
   font-weight: 600;
   font-size: 16px;
   margin:0;
-  margin-bottom: 16px;
+  margin-bottom: 2em;
+  letter-spacing: 0.1em;
 }
 
 nav a{
@@ -155,6 +142,8 @@ nav a{
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
+  display: block;
+  letter-spacing: 0.1em;
 }
 
 nav a:hover{
@@ -186,7 +175,217 @@ a.logout:active{
 }
 
 .content{
-  background: blue;
   min-height: 1em;
   flex: 3 0 902px;
+  padding-right: 11%;
+  padding-left: 2em;
+}
+
+.header-left{
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  margin-top: 2em;
+}
+
+.header-monograma{
+  position: absolute;
+  top: 3em;
+  right: 2em;
+}
+.header-title p{
+  font-size: 14px;
+}
+
+
+.hello{
+  font-size: 24px;
+  line-height: 44px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #C3AD72;
+  font-weight: normal;
+  margin-top: 2em;
+}
+
+.page-section{
+  margin-top: 60px;
+  padding-top: 60px;
+}
+
+.page-section#presenca{
+  margin-top: 32px;
+  margin-bottom: -16px;
+  padding: 0;
+}
+
+.page-section h3{
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.cards-row{
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.card{
+  background: #FFFFFF;
+  border: 1px solid #C4CFDB;
+  box-shadow: 0px 2px 4px rgba(99, 117, 137, 0.2);
+  border-radius: 4px;
+  padding: 16px;
+  padding-bottom: 24px;
+  flex: 0 0 208px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.card h6{
+  margin:0;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card button{
+  margin-top: 24px;
+  width: 100%;
+}
+
+.container-igreja{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 270px;
+}
+
+.container-igreja .img {
+  height: 270px;
+    background-image: url(img/igreja.jpg);
+    flex: 3 0 auto;
+    background-size: cover;
+    background-position: center top;
+}
+
+.location-details {
+  flex: 1 0 26%;
+  padding-left: 8px;
+  border-left: 4px #C3AD72 solid;
+  margin-left: 16px;
+}
+
+.location-title{
+  color: #C3AD72;
+  font-weight: 800;
+}
+
+
+.container-quinta{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 16px;
+  flex-direction: row-reverse;
+  height: 220px;
+}
+
+.container-quinta .img {
+  height: 220px;
+  background-image: url(img/quinta.png);
+  flex: 3 0 auto;
+  background-size: cover;
+  background-position: center bottom;
+}
+
+.container-quinta .location-details {
+  flex: 1 0 26%;
+  padding: 0;
+  padding-right: 8px;
+  border:0;
+  border-right: 4px #C3AD72 solid;
+  margin: 0;
+  margin-right: 16px;
+  text-align: right;
+}
+
+
+.convite-instructions{
+  display: flex;
+  margin-top: 24px;
+}
+
+.convite-step img{
+  height: 112px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contactos{
+  display: flex;
+  margin-top: 24px;
+}
+
+.contacto-noiva{
+  text-align: right;
+  margin-right: 24px;
+}
+
+.contactos .monograma{
+  margin-right: 24px;
+}
+
+.noiva, .noivo{
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+  color: #C3AD72;
+}
+
+.contacto-noiva a, .contacto-noivo a{
+  color: #637589;
+}
+
+.signature{
+  font-size: 11px;
+  margin-top: 88px;
+}
+
+.footer-plant{
+  bottom: -64px;
+  right: 0;
+  position: absolute;
+  width: 266px;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+
+.modal-overlay{
+  height: 100%;
+  width: 100%;
+  background: rgba(79, 85, 91, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.modal-card{
+  background: white;
+  border: 1px solid #C4CFDB;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  width: 50%;
+  margin: auto;
+  margin-top: 8em;
+  padding: 2em;
 }
