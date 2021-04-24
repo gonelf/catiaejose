@@ -371,6 +371,7 @@ a.logout:active{
 
 
 .modal-overlay{
+  /*display: none;*/
   height: 100%;
   width: 100%;
   background: rgba(79, 85, 91, 0.4);
@@ -384,8 +385,96 @@ a.logout:active{
   border: 1px solid #C4CFDB;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  width: 50%;
+  width: fit-content;
   margin: auto;
-  margin-top: 8em;
+  margin-top: 4em;
   padding: 2em;
+  position: relative;
+}
+
+.modal-title{
+  color: #C3AD72;
+}
+
+.modal-card #close{
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5em;
+  padding: 0 2em;
+}
+
+.form-field{
+  display: flex;
+  flex-direction:row;
+}
+
+#field-presenca{
+  margin-bottom: 1em;
+}
+
+.form-label{
+  margin-bottom: 2em;
+  width: 180px;
+  text-align: right;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-right: 1em;
+  font-size: 14px;
+}
+
+.radio-container,
+input[type="email"],
+input[type="tel"],
+input[type="text"]{
+  margin-bottom: 2em;
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+input[type="radio"]{
+  height: 24px;
+  width: 24px;
+  border: 1px solid #C3AD72;
+  vertical-align: bottom;
+  margin-right: 8px;
+}
+
+.radio-label{
+    display: block;
+    margin-bottom: 8px;
+}
+
+.radio-label:first-child{
+  margin-left: 0;
+}
+
+input[type="email"],
+input[type="tel"],
+input[type="text"],
+textarea{
+  width: 320px;
+  font-size: 14px;
+  border: 1px solid #C3AD72;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: -8px;
+}
+
+.button-container{
+  width: 100%;
+  text-align: right;
+  margin-top: 2em;
+}
+
+form.adulto,
+form.plus-one,
+form.kid-known{
+  display: none;
 }

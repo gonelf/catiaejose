@@ -70,7 +70,7 @@
           <div class="container-igreja">
             <div class="img"></div>
             <div class="location-details">
-              <p class="location-title">Igreja de Colares, 12h</p>
+              <p class="location-title">Igreja de Colares, 11:30</p>
               <p>Largo Dr. Carlos França, 2705-192 Colares</p>
               <a href="https://goo.gl/maps/mXou4qM49tjnv7FX6" target="_blank">Mapa</a>
             </div>
@@ -78,7 +78,7 @@
           <div class="container-quinta">
             <div class="img"></div>
             <div class="location-details">
-              <p class="location-title">Quinta Nossa Senhora da Serra, 13h</p>
+              <p class="location-title">Quinta Nossa Senhora da Serra, 13:00</p>
               <p>Rua Alto da Moita, São João das Lampas</p>
               <a href="https://goo.gl/maps/BizoED2vXDc6idam6" target="_blank">Mapa</a>
             </div>
@@ -140,20 +140,134 @@
       <div class="modal-card">
         <h2 class="modal-title">[FirstName] [LastName]</h2>
         <a href="#" id="close"><img src="img/close.svg" alt="Fechar"></a>
-        <form class="" action="" method="post">
-          <input type="radio" name="Sim" value="Sim"><label for="Sim">Sim, confirmo!</label>
-          <input type="radio" name="Nao" value="Nao"><label for="Nao">Não posso ir :(</label>
+<!-- ADULTO:  -->
+        <form class="adulto" action="" method="post" id="adulto">
+          <div class="form-container">
 
-          <label for="email">Email</label>
-          <input type="email" name="email" value="" placeholder="O teu email">
+            <div class="form-field" id="field-presenca">
+              <label for="presenca" class="form-label">Presença</label>
+              <div class="radio-container">
+                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, confirmo!</label>
+                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não posso ir :(</label>
+              </div>
+            </div>
 
-          <label for="telemovel">Telemóvel</label>
-          <input type="tel" name="telemovel" value="" placeholder="O teu número">
+            <div class="form-field other-fields">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" name="email" value="" placeholder="O teu email" required>
+            </div>
 
-          <label for="alergias">Tens alguma alergia alimentar?</label>
-          <textarea name="alergias" rows="2" cols="80" placeholder="Escreve aqui"></textarea>
+            <div class="form-field other-fields">
+              <label for="telemovel" class="form-label">Telemóvel</label>
+              <input type="tel" name="telemovel" value="" placeholder="O teu número" required>
+            </div>
 
-          <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+            <div class="form-field other-fields">
+              <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
+              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+          </div>
+        </form>
+<!-- PLUS ONE:  -->
+        <form class="plus-one" action="index.html" method="post" id="plusone">
+          <div class="form-container">
+
+            <div class="form-field" id="field-presenca">
+              <label for="presenca" class="form-label">Presença</label>
+              <div class="radio-container">
+                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, levo uma pessoa!</label>
+                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não levo ninguém.</label>
+              </div>
+            </div>
+
+            <div class="form-field other-fields">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" name="nome" value="" placeholder="O nome do teu plus one">
+            </div>
+
+            <div class="form-field other-fields">
+              <label for="telemovel" class="form-label">Telemóvel</label>
+              <input type="tel" name="telemovel" value="" placeholder="O número do teu plus one">
+            </div>
+
+            <div class="form-field other-fields">
+              <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
+              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+          </div>
+        </form>
+
+<!-- CRIANÇA KNOWN:  -->
+        <form class="kid-known" action="index.html" method="post" id="kid-known">
+          <div class="form-container">
+
+            <div class="form-field" id="field-presenca">
+              <label for="presenca" class="form-label">Presença</label>
+              <div class="radio-container">
+                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, confirmo!</label>
+                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não pode vir :(</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="idade" class="form-label">Idade</label>
+              <div class="radio-container">
+                <label for="under3" class="radio-label"><input type="radio" name="idade" value="3" required>3 anos ou menor</label>
+                <label for="4to8" class="radio-label"><input type="radio" name="idade" value="4-8" required>Entre 4 e 8 anos</label>
+                <label for="8plus" class="radio-label"><input type="radio" name="idade" value="8" required>Maior de 8 anos</label>
+              </div>
+            </div>
+
+            <div class="form-field other-fields">
+              <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
+              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+          </div>
+        </form>
+
+<!-- CRIANÇA UNKNOWN:  -->
+        <form class="kid-unknown" action="index.html" method="post" id="kid-unknown">
+          <div class="form-container">
+
+            <div class="form-field" id="field-presenca">
+              <label for="presenca" class="form-label">Presença</label>
+              <div class="radio-container">
+                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, confirmo!</label>
+                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não vou levar uma criança.</label>
+              </div>
+            </div>
+
+            <div class="form-field other-fields">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" name="nome" value="" placeholder="O nome da criança">
+            </div>
+
+            <div class="form-field">
+              <label for="idade" class="form-label">Idade</label>
+              <div class="radio-container">
+                <label for="under3" class="radio-label"><input type="radio" name="idade" value="3" required>3 anos ou menor</label>
+                <label for="4to8" class="radio-label"><input type="radio" name="idade" value="4-8" required>Entre 4 e 8 anos</label>
+                <label for="8plus" class="radio-label"><input type="radio" name="idade" value="8" required>Maior de 8 anos</label>
+              </div>
+            </div>
+
+            <div class="form-field other-fields">
+              <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
+              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+          </div>
         </form>
       </div>
     </div>
