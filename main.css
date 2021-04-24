@@ -375,7 +375,7 @@ a.logout:active{
   height: 100%;
   width: 100%;
   background: rgba(79, 85, 91, 0.4);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
