@@ -33,7 +33,7 @@
       <div class="login-container" id="login-container" style="display: none;">
         <h6>Bem-vindo.</h6>
         <p>Introduz o teu e-mail abaixo para acederes ao website do nosso casamento.</p>
-        <form action="" method="POST" id="target">
+        <form action="" method="POST" id="login-form">
           <div>
             <input type="email" id="email" class="email-input" name="email" required autofocus placeholder="O teu e-mail">
           </div>
@@ -47,4 +47,22 @@
 
     </section>
   </body>
+  <script type="text/javascript" src="./cookie.js"></script>
+  <script type="text/javascript" src="./airtable.js"></script>
+  <script type="text/javascript">
+
+    $("#login-form").submit(function(e){
+      let email = $("#email").val();
+      let base = "https://api.airtable.com/v0/apptnwzBVBTiGDyNl/ids?api_key=keybSe3wdoIEJsvGv";
+      let formula = "SEARCH('"+email+"',email)";
+      let url = base+"&filterByFormula="+formula;
+
+      getRecordByEmail(email, function(data){
+        setCookie("catiaejose.com-users", 0, -1);
+        setCookie("catiaejose.com-user", JSON.stringify(data['records'][0]), 10);
+        window.location.href = "./main.html";
+      });
+      return false;
+    });
+  </script>
 </html>
