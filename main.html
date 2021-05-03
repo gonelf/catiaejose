@@ -5,56 +5,6 @@
 
   <script type="text/javascript" src="./cookie.js"></script>
   <script type="text/javascript" src="./airtable.js"></script>
-  <script type="text/javascript">
-    function fetch(user) {
-      let gid = user.fields.GID;
-      getUsersByGID(gid, function(data){
-        // success
-        users = data['records'];
-        setCookie("catiaejose.com-users", JSON.stringify(data['records']), 10);
-        $("#modal-loading").hide();
-        populateInfo(user, users);
-      }, function(){
-        //error
-        setCookie("catiaejose.com-user", 0, -1);
-        window.location.href = "./index.html";
-      });
-    }
-
-    function start(user) {
-      if(!getCookie("catiaejose.com-user")){
-        window.location.href = "./index.html";
-      }
-      else {
-        var users = [];
-
-        if (getCookie("catiaejose.com-users")) {
-          console.log("cache");
-          users = JSON.parse(getCookie("catiaejose.com-users"));
-          populateInfo(user, users);
-          return users;
-        }
-        else {
-          console.log("fetch");
-          $("#modal-loading").show();
-          fetch(user);
-        }
-      }
-    }
-
-    function populateInfo(mainuser, users) {
-      // console.log(users);
-      $("#welcome").html("Olá, "+mainuser.fields.name+".");
-      $("#cards-row").html("");
-      $.each(users, function(index, user){
-        var name = (user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "") : user.fields.name ;
-        $("#cards-row").append('<div class="card">'+
-          '<h6>'+name+'</h6>'+
-          '<button type="button" name="button" usertype="'+user.fields.type+'" userid="'+user.id+'" class="btn-gold confirm">Confirmar presença</button>'+
-        '</div>');
-      });
-    }
-  </script>
   <meta charset="utf-8">
   <title>Cátia & José</title>
   <meta name="description" content="Cátia e José – Save the Date">
@@ -68,16 +18,16 @@
   </script>
 </head>
   <body>
-    <section class="container">
+    <section id="presenca" class="container">
       <div class="sidebar ">
         <nav id="menu">
           <img src="img/planta-bottom-left.png" alt="" class="header-plant">
 
           <h6>Menu</h6>
-          <a href="#top" class="menu-items active">A tua presença</a>
-          <a href="#localizacao" class="menu-items">Localização e Agenda</a>
-          <a href="#convite" class="menu-items">O teu convite</a>
-          <a href="#contactos" class="menu-items">Contactos</a>
+          <a href="#presenca" id="#presenca" class="menu-items active">A tua presença</a>
+          <a href="#localizacao" id="#localizacao" class="menu-items">Localização e Agenda</a>
+          <a href="#convite" id="#convite" class="menu-items">O teu convite</a>
+          <a href="#contactos" id="#contactos" class="menu-items">Contactos</a>
           <a href="index.html" class="logout">Sair</a>
         </nav>
       </div>
@@ -93,7 +43,7 @@
 
         <h2 class="hello" id="welcome">Olá, [FirstName].</h2>
 
-        <section id="presenca" class="page-section">
+        <section class="page-section">
           <h3>A tua presença</h3>
           <p>Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial.
             Abaixo podes encontrar uma área dedicada à confirmação da tua presença, e também à da tua família,
@@ -200,14 +150,14 @@
         <h2 class="modal-title"></h2>
         <a href="#" id="close"><img src="img/close.svg" alt="Fechar"></a>
 <!-- ADULTO:  -->
-        <form class="adulto" action="" method="POST" id="adulto" style="display:none;">
+        <form class="form" action="" method="POST" id="adulto" style="display:none;">
           <div class="form-container">
 
             <div class="form-field" id="field-presenca">
               <label for="presenca" class="form-label">Presença</label>
               <div class="radio-container">
-                <label for="Sim" class="radio-label"><input type="radio" name="confirmed" value="Sim" required>Sim, confirmo!</label>
-                <label for="Nao" class="radio-label"><input type="radio" name="confirmed" value="Nao" required>Não posso ir :(</label>
+                <label for="Sim" class="radio-label"><input type="radio" class="confirm_Sim" name="confirmed" value="Sim" required>Sim, confirmo!</label>
+                <label for="Nao" class="radio-label"><input type="radio" class="confirm_Nao" name="confirmed" value="Nao" required>Não posso ir :(</label>
               </div>
             </div>
 
@@ -227,84 +177,89 @@
             </div>
           </div>
           <div class="button-container">
-            <button type="button" id="adulto-submit" name="confirmar" class="btn-gold">Confirmar</button>
+            <button type="button" id="adulto-submit" name="adulto" class="btn-gold btn-form">Confirmar</button>
           </div>
 
           <input type="hidden" id="id" value="" />
           <input type="hidden" id="name" name="name" value="" />
         </form>
 <!-- PLUS ONE:  -->
-        <form class="plus-one" action="index.html" method="post" id="plusone" style="display:none;">
+        <form class="_form_" action="index.html" method="post" id="plusone" style="display:none;">
           <div class="form-container">
 
-            <div class="form-field" id="field-presenca">
+            <div class="form-field">
               <label for="presenca" class="form-label">Presença</label>
               <div class="radio-container">
-                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, levo uma pessoa!</label>
-                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não levo ninguém.</label>
+                <label for="Sim" class="radio-label"><input type="radio" class="confirm_Sim" name="confirmed" value="Sim" required>Sim, levo uma pessoa!</label>
+                <label for="Nao" class="radio-label"><input type="radio" class="confirm_Nao" name="confirmed" value="Nao" required>Não levo ninguém.</label>
               </div>
             </div>
 
             <div class="form-field other-fields">
-              <label for="nome" class="form-label">Nome</label>
-              <input type="text" name="nome" value="" placeholder="O nome do teu plus one">
+              <label for="name" class="form-label">Nome</label>
+              <input type="text" id="name" name="name" value="" placeholder="O nome do teu plus one">
             </div>
 
             <div class="form-field other-fields">
-              <label for="telemovel" class="form-label">Telemóvel</label>
-              <input type="tel" name="telemovel" value="" placeholder="O número do teu plus one">
+              <label for="phone" class="form-label">Telemóvel</label>
+              <input type="tel" id="phone" name="phone" value="" placeholder="O número do teu plus one">
             </div>
 
             <div class="form-field other-fields">
               <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
-              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+              <textarea id="alergies" name="alergies" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
             </div>
           </div>
           <div class="button-container">
-            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+            <button type="button" name="plusone" class="btn-gold btn-form">Confirmar</button>
           </div>
+
+          <input type="hidden" id="id" value="" />
         </form>
 
 <!-- CRIANÇA KNOWN:  -->
-        <form class="kid-known" action="index.html" method="post" id="kid-known" style="display:none;">
+        <form class="_form_" action="index.html" method="post" id="kid-known" style="display:none;">
           <div class="form-container">
 
-            <div class="form-field" id="field-presenca">
+            <div class="form-field">
               <label for="presenca" class="form-label">Presença</label>
               <div class="radio-container">
-                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, confirmo!</label>
-                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não pode vir :(</label>
+                <label for="Sim" class="radio-label"><input type="radio" class="confirm_Sim" name="confirmed" value="Sim" required>Sim, confirmo!</label>
+                <label for="Nao" class="radio-label"><input type="radio" class="confirm_Nao" name="confirmed" value="Nao" required>Não pode vir :(</label>
               </div>
             </div>
 
             <div class="form-field">
               <label for="idade" class="form-label">Idade</label>
               <div class="radio-container">
-                <label for="under3" class="radio-label"><input type="radio" name="idade" value="3" required>3 anos ou menor</label>
-                <label for="4to8" class="radio-label"><input type="radio" name="idade" value="4-8" required>Entre 4 e 8 anos</label>
-                <label for="8plus" class="radio-label"><input type="radio" name="idade" value="8" required>Maior de 8 anos</label>
+                <label for="under3" class="radio-label"><input type="radio" class="age_3" name="age" value="3" required>3 anos ou menor</label>
+                <label for="4to8" class="radio-label"><input type="radio" class="age_4-8" name="age" value="4-8" required>Entre 4 e 8 anos</label>
+                <label for="8plus" class="radio-label"><input type="radio" class="age_8" name="age" value="8" required>Maior de 8 anos</label>
               </div>
             </div>
 
             <div class="form-field other-fields">
               <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
-              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+              <textarea id="alergies" name="alergies" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
             </div>
           </div>
           <div class="button-container">
-            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+            <button type="button" name="kid-known" class="btn-gold btn-form">Confirmar</button>
           </div>
+
+          <input type="hidden" id="id" value="" />
+          <input type="hidden" id="name" name="name" value="" />
         </form>
 
 <!-- CRIANÇA UNKNOWN:  -->
-        <form class="kid-unknown" action="index.html" method="post" id="kid-unknown" style="display:none;">
+        <form class="_form_" action="index.html" method="post" id="kid-unknown" style="display:none;">
           <div class="form-container">
 
-            <div class="form-field" id="field-presenca">
+            <div class="form-field">
               <label for="presenca" class="form-label">Presença</label>
               <div class="radio-container">
-                <label for="Sim" class="radio-label"><input type="radio" name="presenca" value="Sim" required>Sim, confirmo!</label>
-                <label for="Nao" class="radio-label"><input type="radio" name="presenca" value="Nao" required>Não vou levar uma criança.</label>
+                <label for="Sim" class="radio-label"><input type="radio" class="confirm_Sim" name="confirmed" value="Sim" required>Sim, confirmo!</label>
+                <label for="Nao" class="radio-label"><input type="radio" class="confirm_Nao" name="confirmed" value="Nao" required>Não vou levar uma criança.</label>
               </div>
             </div>
 
@@ -316,82 +271,26 @@
             <div class="form-field">
               <label for="idade" class="form-label">Idade</label>
               <div class="radio-container">
-                <label for="under3" class="radio-label"><input type="radio" name="idade" value="3" required>3 anos ou menor</label>
-                <label for="4to8" class="radio-label"><input type="radio" name="idade" value="4-8" required>Entre 4 e 8 anos</label>
-                <label for="8plus" class="radio-label"><input type="radio" name="idade" value="8" required>Maior de 8 anos</label>
+                <label for="under3" class="radio-label"><input type="radio" class="age_3" name="age" value="3" required>3 anos ou menor</label>
+                <label for="4to8" class="radio-label"><input type="radio" class="age_4-8" name="age" value="4-8" required>Entre 4 e 8 anos</label>
+                <label for="8plus" class="radio-label"><input type="radio" class="age_8" name="age" value="8" required>Maior de 8 anos</label>
               </div>
             </div>
 
             <div class="form-field other-fields">
               <label for="alergias" class="form-label">Existe alguma alergia alimentar?</label>
-              <textarea name="alergias" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
+              <textarea id="alergies" name="alergies" rows="2" required placeholder="Exemplos: glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja..."></textarea>
             </div>
           </div>
           <div class="button-container">
-            <button type="button" name="confirmar" class="btn-gold">Confirmar</button>
+            <button type="button" name="kid-unknown" class="btn-gold btn-form">Confirmar</button>
           </div>
+
+          <input type="hidden" id="id" value="" />
+          <input type="hidden" id="name" name="name" value="" />
         </form>
       </div>
     </div>
-    <script type="text/javascript">
-      $("#modal-loading").hide();
-      $("#modal-overlay").hide();
-
-      let user = JSON.parse(getCookie("catiaejose.com-user"));
-      console.log(user);
-
-      var users = start(user);
-
-      $("#close").click(function(){
-        $('#modal-overlay').toggle();
-      });
-
-      $("body").on("click", ".confirm", function(e){
-        if (!users){
-          users = JSON.parse(getCookie("catiaejose.com-users"));
-        }
-        let type = $(e.target).attr("usertype");
-        let userid = $(e.target).attr("userid");
-        console.log(userid);
-        var user;
-        $.each(users, function(i, u) {
-          if(u.id == userid) {
-            console.log(u);
-            user = u;
-          }
-        });
-
-        $("#modal-overlay").show();
-        $("#"+type).show();
-
-        // data
-        $(".modal-title").html(user.fields.name);
-        let name = (user.fields.name) ? user.fields.name : "";
-        $("#name").val(name);
-        let email = (user.fields.email) ? user.fields.email : "";
-        $("#email").val(email);
-        let phone = (user.fields.phone) ? user.fields.phone : "";
-        $("#phone").val(phone);
-        let alergies = (user.fields.alergies) ? user.fields.alergies : "";
-        $("#alergies").html(alergies);
-        $("#id").val(user.id);
-      });
-
-      $("#adulto-submit").click(function(e) {
-        var form = $('#adulto').serializeArray().reduce(function(obj, item) {
-          obj[item.name] = item.value;
-          return obj;
-        }, {});
-        let id = $('#adulto #id').val();
-        let data = {'id': id, 'fields': form};
-        updateUserRecord(data, function(data){
-          console.log("success");
-          fetch(user);
-        }, function(){
-          console.log("error");
-        })
-        return false;
-      });
-    </script>
+    <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>
