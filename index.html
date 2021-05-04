@@ -58,9 +58,12 @@
       let url = base+"&filterByFormula="+formula;
 
       getRecordByEmail(email, function(data){
-        setCookie("catiaejose.com-users", 0, -1);
-        setCookie("catiaejose.com-user", JSON.stringify(data['records'][0]), 10);
-        window.location.href = "./main.html";
+        console.log(data);
+        if (data.records.length > 0) {
+          setCookie("catiaejose.com-users", 0, -1);
+          setCookie("catiaejose.com-user", JSON.stringify(data['records'][0]), 10);
+          window.location.href = "./main.html";
+        }
       });
       return false;
     });

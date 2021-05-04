@@ -41,7 +41,7 @@ function populateInfo(mainuser, users) {
   $("#welcome").html("Olá, "+mainuser.fields.name+".");
   $("#cards-row").html("");
   $.each(users.reverse(), function(index, user){
-    var name = (user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "") : user.fields.name ;
+    var name = (!user.fields.name || user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "") : user.fields.name ;
     var confirmed = (user.fields.confirmed) ? "<span>Confirmado</span>" : '<span>&nbsp;</span>';
     var confirm_btn = (user.fields.confirmed) ? "Alterar confirmação" : 'Confirmar presença';
     var confirm_btn_class = (user.fields.confirmed) ? "btn" : "btn-gold";
