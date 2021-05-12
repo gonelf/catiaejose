@@ -99,29 +99,41 @@ body{
 .container{
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .sidebar{
   min-height: 1em;
-  flex: 1 0 208px;
+  flex: 1 0 180px;
   display: flex;
   flex-direction: column;
   padding-left: 2em;
+  margin-top: 11em;
 }
 
 nav{
-  position: fixed;
   display: flex;
   flex-direction: column;
 }
 
 .header-plant{
-  height: 262px;
-  margin-top: -113px;
-  transform: matrix(1, 0, 0, -1, 0, 0);
-  margin-left: -2em;
-  margin-bottom: 2em;
+  height: 149px;
+  position: absolute;
+  z-index: 0;
+}
 
+.mobile-menu{
+  display: none;
+  text-transform: uppercase;
+  color: #C3AD72;
+  font-weight: 600;
+  font-size: 16px;
+  margin:0;
+  margin-bottom: 2em;
+  letter-spacing: 0.1em;
+  position: absolute;
+  right: 5em;
+  text-decoration: none;
 }
 
 nav h6{
@@ -176,9 +188,9 @@ a.logout:active{
 
 .content{
   min-height: 1em;
-  flex: 3 0 902px;
+  flex: 3 1 902px;
   padding-right: 11%;
-  padding-left: 2em;
+  padding-left: 3em;
 }
 
 .header-left{
@@ -206,6 +218,7 @@ a.logout:active{
   color: #C3AD72;
   font-weight: normal;
   margin-top: 2em;
+  margin-bottom: -60px;
 }
 
 .page-section{
@@ -319,6 +332,15 @@ a.logout:active{
 .convite-instructions{
   display: flex;
   margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.convite-step{
+  flex: 1 0 25%;
+  padding-right: 1em;
+  margin-bottom: 1em;
 }
 
 .convite-step img{
@@ -477,4 +499,99 @@ form.adulto,
 form.plus-one,
 form.kid-known{
   display: none;
+}
+
+
+/* MEDIA QUERIES */
+
+@media all and (max-width: 1199px) {
+  .sidebar{
+    position: absolute;
+    background: white;
+    box-shadow: 2px 2px 10px black;
+    z-index: 99999999999999999;
+    padding: 2em;
+    height: 100vh;
+    margin-top: 0;
+    display: none;
+  }
+
+  .header-plant{
+    left: -9em;
+  }
+
+  .content{
+    padding: 0 8em;
+  }
+
+  .header-monograma{
+    display: none;
+  }
+
+  .mobile-menu{
+    display: block;
+  }
+
+  .convite-step{
+    flex: 1 0 50%;
+  }
+}
+
+@media all and (max-width: 799px) {
+
+
+  .content{
+    padding:0 3em;
+  }
+
+  .header-plant{
+    left: -13em;
+  }
+
+  .container-igreja{
+    margin-bottom: 2em;
+  }
+
+  .container-igreja,
+  .container-quinta{
+    display: block;
+    height: auto;
+  }
+
+  .container-igreja .img,
+  .container-quinta .img{
+    height: 180px;
+    background-position: center center;
+  }
+
+    .container-igreja .location-details,
+    .container-quinta .location-details{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 4px #C3AD72 solid;
+    padding-top: 1em;
+    text-align: left;
+  }
+
+  .footer-plant{
+    right: -8em;
+  }
+
+  .convite-step{
+    flex: 1 0 100%;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .convite-step img {
+    height: 112px;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+  }
+
 }
