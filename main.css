@@ -542,6 +542,7 @@ form.kid-known{
   .footer-plant{
     right: -4em;
   }
+
 }
 
 @media all and (max-width: 799px) {
@@ -600,5 +601,11 @@ form.kid-known{
     margin: auto;
     margin-bottom: 1em;
   }
+
+  .modal-card{
+    width: 90% !important;
+    padding: 1.5em;
+  }
+
 
 }
