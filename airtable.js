@@ -1,9 +1,10 @@
 function getRecordByEmail(email, callback) {
 
   let formula = "SEARCH('"+email+"',email)";
-  // console.log("https://api.airtable.com/v0/apptnwzBVBTiGDyNl/ids?filterByFormula="+formula);
+  var url = "https://api.airtable.com/v0/apptnwzBVBTiGDyNl/ids?filterByFormula="+formula;
+
   $.ajax({
-    url: "https://api.airtable.com/v0/apptnwzBVBTiGDyNl/ids?filterByFormula="+formula,
+    url: url,
     beforeSend: function(xhr) {
       xhr.setRequestHeader("Authorization", "Bearer keybSe3wdoIEJsvGv");
     },
@@ -12,7 +13,6 @@ function getRecordByEmail(email, callback) {
     contentType: 'application/json',
     processData: false,
     success: function (data) {
-      // console.log(JSON.stringify(data));
       callback(data);
     },
     error: function(){

@@ -137,8 +137,12 @@ $(".menu-items").click(function(e){
   $('html, body').animate({
       scrollTop: $(e.target.id).offset().top
   }, 500);
+  $(".sidebar").hide();
 });
 
+$(".mobile-menu").click(function(e){
+  $(".sidebar").show();
+});
 
 
 // start

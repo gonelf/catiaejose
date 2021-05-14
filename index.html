@@ -53,15 +53,12 @@
 
     $("#login-form").submit(function(e){
       let email = $("#email").val();
-      let base = "https://api.airtable.com/v0/apptnwzBVBTiGDyNl/ids?api_key=keybSe3wdoIEJsvGv";
-      let formula = "SEARCH('"+email+"',email)";
-      let url = base+"&filterByFormula="+formula;
-
       getRecordByEmail(email, function(data){
-        console.log(data);
+        // console.log(data.records.length);
         if (data.records.length > 0) {
+          console.log(data.records[0]);
           setCookie("catiaejose.com-users", 0, -1);
-          setCookie("catiaejose.com-user", JSON.stringify(data['records'][0]), 10);
+          setCookie("catiaejose.com-user", JSON.stringify(data.records[0]), 10);
           window.location.href = "./main.html";
         }
       });
