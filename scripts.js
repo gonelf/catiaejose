@@ -3,9 +3,6 @@
 let alergies_placeholder = "Exemplos: vegetariano, vegan, glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja...";
 $(".alergies").attr("placeholder", alergies_placeholder);
 
-let message_solo = "Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial. Abaixo podes encontrar uma área dedicada à confirmação da tua presença.";
-let message_family = "Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial. Abaixo podes encontrar uma área dedicada à confirmação da tua presença, e também à da tua família, a quem estendemos o convite com todo o gosto!";
-
 // functions
 
 function fetch(user) {
@@ -13,12 +10,13 @@ function fetch(user) {
   getUsersByGID(gid, function(data){
     // success
     users = data['records'];
-    setCookie("catiaejose.com-users", encodeURI(JSON.stringify(data['records'])), 10);
+    setCookie("catiaejose.com-users", JSON.stringify(data['records']), 10);
+
     $("#modal-loading").hide();
     populateInfo(user, users);
   }, function(){
     //error
-    setCookie("catiaejose.com-user", 0, -1);
+    deleteCookie("catiaejose.com-user");
     window.location.href = "./index.html";
   });
 }
@@ -28,11 +26,10 @@ function start(user) {
     window.location.href = "./index.html";
   }
   else {
-    var users = [];
+    // var users = [];
 
     if (getCookie("catiaejose.com-users")) {
       // console.log("cache");
-      // console.log(getCookie("catiaejose.com-users"));
       users = JSON.parse(getCookie("catiaejose.com-users"));
       populateInfo(user, users);
       return users;
@@ -49,7 +46,6 @@ function populateInfo(mainuser, users) {
   // console.log(users);
   $("#welcome").html("Olá, "+mainuser.fields.name+".");
   $("#cards-row").html("");
-  $("#message").text((users.length > 1 ? message_family : message_solo));
   $.each(users.reverse(), function(index, user){
     var name = (!user.fields.name || user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "Filho/a") : user.fields.name ;
     var confirmed = (user.fields.confirmed) ? "<span class='confirmado'>Confirmado</span>" : '<span>&nbsp;</span>';
@@ -83,11 +79,9 @@ function formSubmit(target) {
     // console.log("success");
     fetch(user);
     $("#modal-overlay").hide();
-    click = false;
   }, function(){
     // console.log("error");
     $("#modal-overlay").hide();
-    click = false;
   })
 }
 
@@ -115,13 +109,11 @@ $("body").on("click", ".confirm", function(e){
   hideForms();
 
   $("#modal-overlay").show();
-  $("#modal-card").css({"margin-top":window.pageYOffset+"px"})
-  // console.log(window.pageYOffset);
   $("#"+type).show();
 
   // data
+  $(".modal-title").html(user.fields.name);
   let name = (user.fields.name) ? user.fields.name : "";
-  $(".modal-title").html(name);
   $("#"+type+" #name").val(name);
   let email = (user.fields.email) ? user.fields.email : "";
   $("#"+type+" #email").val(email);
@@ -149,6 +141,7 @@ $(".menu-items").click(function(e){
   $(".sidebar").hide();
 });
 
+
 $(".mobile-menu").click(function(e){
   $(".sidebar").show();
 });
@@ -167,12 +160,12 @@ $("#modal-overlay").click(function(e){
     $("#modal-overlay").hide();
   }
 })
+
 // start
 
 $("#modal-loading").hide();
 $("#modal-overlay").hide();
 
-// console.log(getCookie("catiaejose.com-user"));
 let user = JSON.parse(getCookie("catiaejose.com-user"));
 // console.log(user);
 

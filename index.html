@@ -16,7 +16,7 @@
   </head>
   <body>
     <h1 style="display:none;">Casamento Cátia Jorge & José Fernandes – Almoçageme 2021</h1>
-    <div class="planta-bottom-left" style="z-index:100;">
+    <div class="planta-bottom-left" style="z-index: 100;">
         <img src="img/planta-bottom-left.png" alt="">
     </div>
     <div class="planta-top-right">
@@ -57,18 +57,17 @@
 
   </body>
   <script type="text/javascript" src="./cookie.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script> -->
+
   <script type="text/javascript" src="./airtable.js"></script>
   <script type="text/javascript">
 
     $("#login-form").submit(function(e){
       let email = $("#email").val();
       getRecordByEmail(email, function(data){
-        // console.log(data.records.length);
         if (data.records.length > 0) {
-          // console.log(data.records[0]);
-          setCookie("catiaejose.com-users", 0, -1);
-          setCookie("catiaejose.com-user", encodeURI(JSON.stringify(data.records[0])), 10);
-          // console.log(getCookie("catiaejose.com-user"));
+          deleteCookie("catiaejose.com-users");
+          setCookie("catiaejose.com-user", JSON.stringify(data.records[0]), 10);
           window.location.href = "./main.html";
         }
         else {
