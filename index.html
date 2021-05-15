@@ -16,7 +16,7 @@
   </head>
   <body>
     <h1 style="display:none;">Casamento Cátia Jorge & José Fernandes – Almoçageme 2021</h1>
-    <div class="planta-bottom-left">
+    <div class="planta-bottom-left" style="z-index:100;">
         <img src="img/planta-bottom-left.png" alt="">
     </div>
     <div class="planta-top-right">
@@ -30,7 +30,7 @@
         <button type="button" name="Entrar" class="btn-gold large" onclick="showLogin()">Entrar</button>
       </div>
 
-      <div class="login-container" id="login-container" style="display: none;">
+      <div class="login-container" id="login-container" style="display: none; z-index: 1000; position: relative;">
         <h6>Bem-vindo.</h6>
         <p>Introduz o teu e-mail abaixo para acederes ao website do nosso casamento.</p>
         <form action="" method="POST" id="login-form">
