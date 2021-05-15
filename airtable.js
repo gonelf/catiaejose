@@ -38,7 +38,7 @@ function getUsersByGID(GID, callback, error) {
     contentType: 'application/json',
     processData: false,
     success: function (data) {
-      // console.log(data);
+      console.log(data);
       callback(data);
     },
     error: function(){

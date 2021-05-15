@@ -13,7 +13,7 @@ function fetch(user) {
   getUsersByGID(gid, function(data){
     // success
     users = data['records'];
-    setCookie("catiaejose.com-users", JSON.stringify(data['records']), 10);
+    setCookie("catiaejose.com-users", encodeURI(JSON.stringify(data['records'])), 10);
     $("#modal-loading").hide();
     populateInfo(user, users);
   }, function(){
@@ -32,6 +32,7 @@ function start(user) {
 
     if (getCookie("catiaejose.com-users")) {
       // console.log("cache");
+      // console.log(getCookie("catiaejose.com-users"));
       users = JSON.parse(getCookie("catiaejose.com-users"));
       populateInfo(user, users);
       return users;
@@ -154,6 +155,7 @@ $(".mobile-menu").click(function(e){
 $("#modal-loading").hide();
 $("#modal-overlay").hide();
 
+// console.log(getCookie("catiaejose.com-user"));
 let user = JSON.parse(getCookie("catiaejose.com-user"));
 // console.log(user);
 

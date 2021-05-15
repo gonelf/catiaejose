@@ -63,11 +63,12 @@
     $("#login-form").submit(function(e){
       let email = $("#email").val();
       getRecordByEmail(email, function(data){
-        console.log(data.records.length);
+        // console.log(data.records.length);
         if (data.records.length > 0) {
-          console.log(data.records[0]);
+          // console.log(data.records[0]);
           setCookie("catiaejose.com-users", 0, -1);
-          setCookie("catiaejose.com-user", JSON.stringify(data.records[0]), 10);
+          setCookie("catiaejose.com-user", encodeURI(JSON.stringify(data.records[0])), 10);
+          // console.log(getCookie("catiaejose.com-user"));
           window.location.href = "./main.html";
         }
         else {
