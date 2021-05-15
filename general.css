@@ -1,0 +1,55 @@
+
+button{
+  font-family: 'Avenir', sans-serif;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px 0px #63778980;
+}
+
+button:hover{
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+button:active,
+button:focus,
+button:focus-within,
+button:focus-visible,
+button:visited{
+  border: none;
+  outline: 0;
+}
+
+button.btn-gold, button.btn{
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+button.btn-gold.large,
+button.btn.large{
+  font-size: 24px;
+  padding: 8px 24px;
+  line-height: 32px;
+  margin-top: 24px;
+}
+
+button.btn-gold {
+  background: #C3AD72;
+}
+
+button.btn-gold:hover,
+button.btn-gold.large:hover{
+  background: #AC9149;
+}
+
+button.btn{
+  background: #637589;
+}
+
+button.btn:hover,
+button.btn.large:hover{
+  background: #3A5471;
+}

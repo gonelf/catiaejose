@@ -30,11 +30,18 @@ dd {
 }
 
 /* Set core body defaults */
+.wrapper {
+  width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  /* overflow-x: clip; */
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -79,80 +86,611 @@ select {
 }
 
 body{
-  height: 100vh;
   background-image: url('img/background.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Avenir light', sans-serif;
-}
-
-.planta-top-right,
-.planta-bottom-left{
-  position: absolute;
-  height: 20vw;
-}
-.planta-top-right img,
-.planta-bottom-left img{
-  height: 100%;
-}
-.planta-top-right{
-  top: 0;
-  right: 0;
-}
-.planta-bottom-left{
-  bottom: 0;
-  left: 0;
-}
-
-.content{
-  max-width: 90%;
-  margin:auto;
-}
-
-.std-container{
-  text-align: center;
+  background-position: top left;
+  background-repeat: repeat;
+  background-size: auto;
+  font-family: 'Avenir', sans-serif;
+  position: relative;
   color: #637589;
-  letter-spacing: 4px;
-  padding-top: 7%;
 }
 
-.std-container h2{
-  font-size: 40px;
-}
-.std-container h1{
-  margin: auto;
-}
-.std-container .calligraphy{
+.calligraphy{
   color: #C3AD72;
   font-family: 'Cherolina', cursive;
-  font-size: 232px;
+  font-size: 56px;
   font-weight: 100;
   line-height: 1;
 }
-.std-container h3{
-  margin: auto;
-  font-size: 24px;
-  text-transform: uppercase;
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
-.std-container h5{
-  margin: auto;
-  font-size: 16px;
+
+.sidebar{
+  min-height: 1em;
+  flex: 1 0 180px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2em;
+  margin-top: 11em;
+}
+
+nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.header-plant{
+  height: 149px;
+  position: absolute;
+  z-index: 0;
+}
+
+.mobile-menu{
+  display: none;
   text-transform: uppercase;
+  color: #C3AD72;
+  font-weight: 600;
+  font-size: 16px;
+  margin:0;
+  margin-bottom: 2em;
+  letter-spacing: 0.1em;
+  position: absolute;
+  right: 3em;
+  text-decoration: none;
+}
+
+nav h6{
+  text-transform: uppercase;
+  color: #C3AD72;
+  font-weight: 600;
+  font-size: 16px;
+  margin:0;
+  margin-bottom: 2em;
+  letter-spacing: 0.1em;
+}
+
+nav a{
+  margin-top: 16px;
+  text-transform: uppercase;
+  color: #C3AD72;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  letter-spacing: 0.1em;
+}
+
+nav a:hover{
+  color: #637589 !important;
+  font-weight: 600 !important;
+}
+
+nav a:visited{
+  color: #C3AD72;
+  font-weight: 600;
+}
+
+.active{
+  color: #637589 !important;
+  font-weight: 600 !important;
+  padding-left: 8px;
+  border-left: 4px #637589 solid;
+}
+
+
+a.logout{
+  margin-top: 32px;
+}
+
+a.logout:visited,
+a.logout:active{
+  padding: 0;
+  border: none;
+}
+
+.content{
+  min-height: 1em;
+  flex: 3 1 902px;
+  padding-right: 11%;
+  padding-left: 3em;
+}
+
+.header-left{
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
   margin-top: 2em;
 }
 
-.std-container img{
-  margin: auto;
-  margin-top: 3em;
+.header-monograma{
+  position: absolute;
+  top: 3em;
+  right: 2em;
+}
+.header-title p{
+  font-size: 14px;
 }
 
-@media all and (max-width: 1024px) {
-  .std-container{
-    padding-top: 15%;
+
+.hello{
+  font-size: 24px;
+  line-height: 44px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #C3AD72;
+  font-weight: normal;
+  margin-top: 2em;
+  margin-bottom: -60px;
+}
+
+.page-section{
+  margin-top: 60px;
+  padding-top: 60px;
+}
+
+.page-section#presenca{
+  margin-top: 32px;
+  margin-bottom: -16px;
+  padding: 0;
+}
+
+.page-section h3{
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.cards-row{
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.card{
+  background: #FFFFFF;
+  border: 1px solid #C4CFDB;
+  box-shadow: 0px 2px 4px rgba(99, 117, 137, 0.2);
+  border-radius: 4px;
+  padding: 16px;
+  padding-bottom: 24px;
+  flex: 0 0 208px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.card h6{
+  margin:0;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card button{
+  margin-top: 24px;
+  width: 100%;
+}
+
+span.confirmado {
+    font-size: 14px;
+    color: cadetblue;
+    font-style: italic;
+}
+
+.container-igreja{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 270px;
+}
+
+.container-igreja .img {
+  height: 270px;
+    background-image: url(img/igreja.jpg);
+    flex: 3 0 auto;
+    background-size: cover;
+    background-position: center top;
+}
+
+.location-details {
+  flex: 1 0 26%;
+  padding-left: 8px;
+  border-left: 4px #C3AD72 solid;
+  margin-left: 16px;
+}
+
+.location-title{
+  color: #C3AD72;
+  font-weight: 800;
+}
+
+
+.container-quinta{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 16px;
+  flex-direction: row-reverse;
+  height: 220px;
+}
+
+.container-quinta .img {
+  height: 220px;
+  background-image: url(img/quinta.png);
+  flex: 3 0 auto;
+  background-size: cover;
+  background-position: center bottom;
+}
+
+.container-quinta .location-details {
+  flex: 1 0 26%;
+  padding: 0;
+  padding-right: 8px;
+  border:0;
+  border-right: 4px #C3AD72 solid;
+  margin: 0;
+  margin-right: 16px;
+  text-align: right;
+}
+
+
+.convite-instructions{
+  display: flex;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.convite-step{
+  flex: 1 0 25%;
+  padding-right: 1em;
+  margin-bottom: 1em;
+}
+
+.convite-step img{
+  height: 112px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contactos{
+  display: flex;
+  margin-top: 24px;
+}
+
+.contacto-noiva{
+  text-align: right;
+  margin-right: 24px;
+}
+
+.contactos .monograma{
+  margin-right: 24px;
+}
+
+.noiva, .noivo{
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+  color: #C3AD72;
+}
+
+.contacto-noiva a, .contacto-noivo a{
+  color: #637589;
+}
+
+.signature{
+  font-size: 11px;
+  margin-top: 88px;
+  padding-bottom: 2em;
+}
+
+.footer-plant{
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 266px;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+
+.modal-overlay{
+  /*display: none;*/
+  height: 100%;
+  width: 100%;
+  background: rgba(79, 85, 91, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal-card{
+  background: white;
+  border: 1px solid #C4CFDB;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 4em;
+  padding: 2em;
+  position: relative;
+}
+
+.modal-title{
+  color: #C3AD72;
+}
+
+.modal-card #close{
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5em;
+  padding: 0 2em;
+}
+
+.form-field{
+  display: flex;
+  flex-direction:row;
+}
+
+#field-presenca{
+  margin-bottom: 1em;
+}
+
+.form-label{
+  margin-bottom: 2em;
+  width: 180px;
+  text-align: right;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-right: 1em;
+  font-size: 14px;
+}
+
+.radio-container,
+input[type="email"],
+input[type="tel"],
+input[type="text"]{
+  margin-bottom: 2em;
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+input[type="radio"]{
+  height: 24px;
+  width: 24px;
+  border: 1px solid #C3AD72;
+  vertical-align: bottom;
+  margin-right: 8px;
+}
+
+.radio-label{
+    display: block;
+    margin-bottom: 8px;
+}
+
+.radio-label:first-child{
+  margin-left: 0;
+}
+
+input[type="email"],
+input[type="tel"],
+input[type="text"],
+textarea{
+  width: 320px;
+  font-size: 14px;
+  border: 1px solid #C3AD72;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: -8px;
+}
+
+.button-container{
+  width: 100%;
+  text-align: right;
+  margin-top: 2em;
+}
+
+form.adulto,
+form.plus-one,
+form.kid-known{
+  display: none;
+}
+
+
+.modal-loading {
+  background-color: #f9f9f1;
+}
+img#loading {
+    margin: auto;
+}
+p.loading-txt {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* MEDIA QUERIES */
+
+@media all and (max-width: 1199px) {
+  .sidebar{
+    position: absolute;
+    background: #f9f9f9;
+    box-shadow: 2px 2px 30px rgb(0 0 0 / 20%);
+    z-index: 99999999999999999;
+    padding: 2em;
+    height: 100%;
+    margin-top: 0;
+    display: none;
+    right: 0;
+    width: 320px;
   }
-  .planta-top-right,
-  .planta-bottom-left{
-    height: 20vw;
+
+  .header-plant{
+    left: -9em;
   }
+
+  .content{
+    padding: 0 8em;
+  }
+
+  .header-monograma{
+    display: none;
+  }
+
+  .mobile-menu{
+    display: block;
+  }
+
+  .convite-step{
+    flex: 1 0 50%;
+  }
+
+  .footer-plant{
+    right: -4em;
+  }
+
+}
+
+@media all and (max-width: 799px) {
+
+
+  .content{
+    padding:0 3em;
+  }
+
+  .header-plant{
+    left: -13em;
+  }
+
+  .container-igreja{
+    margin-bottom: 2em;
+  }
+
+  .container-igreja,
+  .container-quinta{
+    display: block;
+    height: auto;
+  }
+
+  .container-igreja .img,
+  .container-quinta .img{
+    height: 180px;
+    background-position: center center;
+  }
+
+    .container-igreja .location-details,
+    .container-quinta .location-details{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 4px #C3AD72 solid;
+    padding-top: 1em;
+    text-align: left;
+  }
+
+  .footer-plant{
+    right: -8em;
+  }
+
+  .convite-step{
+    flex: 1 0 100%;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .convite-step img {
+    height: 112px;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+  }
+
+  .modal-overlay{
+    position: absolute;
+  }
+
+  .modal-card{
+    width: 90% !important;
+    padding: 1.5em;
+    margin-top: 2em;
+  }
+
+  .mobile-menu {
+    right: 1.5em;
+  }
+
+  .form-container{
+    padding: 0;
+    display: block;
+  }
+
+  .form-field{
+    display: block;
+  }
+
+  #field-presenca{
+    margin-bottom: 2em;
+  }
+
+  .form-label{
+    text-align: left;
+    display: block;
+    width: 100%;
+  }
+
+  .radio-container, input[type="email"],
+  input[type="tel"], input[type="text"] {
+    margin-bottom: 2em;
+    display: block;
+    width: 100%;
+  }
+
+  textarea{
+    min-height: 80px;
+    width: 100%;
+  }
+
+  .contactos{
+    display: block;
+  }
+
+  .contacto-noiva {
+    text-align: left;
+    margin-right:0;
+    margin-bottom: 1em;
+  }
+
+  .contactos .monograma {
+    display: none;
+  }
+
+  .noiva, .noivo {
+    display: inline-block;
+    margin-right: .5em;
+  }
+
+
 }
