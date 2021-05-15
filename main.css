@@ -35,6 +35,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -272,6 +273,12 @@ a.logout:active{
   width: 100%;
 }
 
+span.confirmado {
+    font-size: 14px;
+    color: cadetblue;
+    font-style: italic;
+}
+
 .container-igreja{
   display: flex;
   justify-content: space-between;
@@ -503,6 +510,19 @@ form.kid-known{
 }
 
 
+.modal-loading {
+  background-color: #f9f9f1;
+}
+img#loading {
+    margin: auto;
+}
+p.loading-txt {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
 /* MEDIA QUERIES */
 
 @media all and (max-width: 1199px) {
@@ -602,9 +622,68 @@ form.kid-known{
     margin-bottom: 1em;
   }
 
+  .modal-overlay{
+    position: absolute;
+  }
+
   .modal-card{
     width: 90% !important;
     padding: 1.5em;
+    margin-top: 2em;
+  }
+
+  .mobile-menu {
+    right: 1.5em;
+  }
+
+  .form-container{
+    padding: 0;
+    display: block;
+  }
+
+  .form-field{
+    display: block;
+  }
+
+  #field-presenca{
+    margin-bottom: 2em;
+  }
+
+  .form-label{
+    text-align: left;
+    display: block;
+    width: 100%;
+  }
+
+  .radio-container, input[type="email"],
+  input[type="tel"], input[type="text"] {
+    margin-bottom: 2em;
+    display: block;
+    width: 100%;
+  }
+
+  textarea{
+    min-height: 80px;
+    width: 100%;
+  }
+
+  .contactos{
+    display: block;
+  }
+
+  .contacto-noiva {
+    text-align: left;
+    margin-right:0;
+    margin-bottom: 1em;
+  }
+
+  .contactos .monograma {
+    display: none;
+  }
+
+  .noiva, .noivo {
+    display: inline-block;
+    margin-right: .5em;
   }
 
 

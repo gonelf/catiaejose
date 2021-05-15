@@ -35,6 +35,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -198,6 +199,54 @@ input.email-input:visited{
   outline: 0;
 }
 
+
+
+.modal-overlay{
+  /*display: none;*/
+  height: 100%;
+  width: 100%;
+  background: rgba(79, 85, 91, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal-card{
+  background: white;
+  border: 1px solid #C4CFDB;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 4em;
+  padding: 2em;
+  position: relative;
+}
+
+.modal-title{
+  color: #C3AD72;
+}
+
+.modal-card #close{
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+}
+
+.modal-error{
+  text-align: center;
+}
+
+img#error {
+    width: 55%;
+    margin: auto;
+    max-width: 256px;
+}
+
+.error-txt{
+  margin: 2em 0;
+}
+
 @media all and (max-width: 1024px) {
   .std-container{
     padding-top: 15%;
@@ -205,5 +254,23 @@ input.email-input:visited{
   .planta-top-right,
   .planta-bottom-left{
     height: 20vw;
+  }
+}
+
+@media all and (max-width: 799px) {
+  .std-container .calligraphy {
+    font-size: 110px;
+  }
+  .login-container {
+    padding-top: 25%;
+  }
+  .modal-overlay{
+    position: absolute;
+  }
+
+  .modal-card{
+    width: 90% !important;
+    padding: 1.5em;
+    margin-top: 2em;
   }
 }

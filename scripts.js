@@ -3,6 +3,9 @@
 let alergies_placeholder = "Exemplos: vegetariano, vegan, glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja...";
 $(".alergies").attr("placeholder", alergies_placeholder);
 
+let message_solo = "Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial. Abaixo podes encontrar uma área dedicada à confirmação da tua presença.";
+let message_family = "Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial. Abaixo podes encontrar uma área dedicada à confirmação da tua presença, e também à da tua família, a quem estendemos o convite com todo o gosto!";
+
 // functions
 
 function fetch(user) {
@@ -45,9 +48,10 @@ function populateInfo(mainuser, users) {
   // console.log(users);
   $("#welcome").html("Olá, "+mainuser.fields.name+".");
   $("#cards-row").html("");
+  $("#message").text((users.length > 1 ? message_family : message_solo));
   $.each(users.reverse(), function(index, user){
     var name = (!user.fields.name || user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "Filho/a") : user.fields.name ;
-    var confirmed = (user.fields.confirmed) ? "<span>Confirmado</span>" : '<span>&nbsp;</span>';
+    var confirmed = (user.fields.confirmed) ? "<span class='confirmado'>Confirmado</span>" : '<span>&nbsp;</span>';
     var confirm_btn = (user.fields.confirmed) ? "Alterar confirmação" : 'Confirmar presença';
     var confirm_btn_class = (user.fields.confirmed) ? "btn" : "btn-gold";
     $("#cards-row").append('<div class="card">'+
