@@ -67,7 +67,7 @@ function hideForms() {
   $('#adulto').hide();
   $('#plusone').hide();
   $('#kid-known').hide();
-  $('#kid-unkown').hide();
+  $('#kid-unknown').hide();
 }
 
 function formSubmit(target) {
@@ -116,8 +116,8 @@ $("body").on("click", ".confirm", function(e){
   $("#"+type).show();
 
   // data
-  $(".modal-title").html(user.fields.name);
   let name = (user.fields.name) ? user.fields.name : "";
+  $(".modal-title").html(name);
   $("#"+type+" #name").val(name);
   let email = (user.fields.email) ? user.fields.email : "";
   $("#"+type+" #email").val(email);
