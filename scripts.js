@@ -11,12 +11,13 @@ function fetch(user) {
     // success
     users = data['records'];
     setCookie("catiaejose.com-users", JSON.stringify(data['records']), 10);
+    getCookie("catiaejose.com-users");
 
     $("#modal-loading").hide();
     populateInfo(user, users);
   }, function(){
     //error
-    deleteCookie("catiaejose.com-user");
+    setCookie("catiaejose.com-user", "", 0);
     window.location.href = "./index.html";
   });
 }
@@ -48,7 +49,7 @@ function populateInfo(mainuser, users) {
   $("#cards-row").html("");
   $.each(users.reverse(), function(index, user){
     var name = (!user.fields.name || user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "Filho/a") : user.fields.name ;
-    var confirmed = (user.fields.confirmed) ? "<span class='confirmado'>Confirmado</span>" : '<span>&nbsp;</span>';
+    var confirmed = (user.fields.confirmed) ? (user.fields.confirmed == "Sim" ? "<span class='confirmado'>Confirmado</span>" : "<span class='confirmado_nao'>Não posso ir</span>") : '<span>&nbsp;</span>';
     var confirm_btn = (user.fields.confirmed) ? "Alterar confirmação" : 'Confirmar presença';
     var confirm_btn_class = (user.fields.confirmed) ? "btn" : "btn-gold";
     $("#cards-row").append('<div class="card">'+
@@ -112,8 +113,8 @@ $("body").on("click", ".confirm", function(e){
   $("#"+type).show();
 
   // data
-  $(".modal-title").html(user.fields.name);
   let name = (user.fields.name) ? user.fields.name : "";
+  $(".modal-title").html(name);
   $("#"+type+" #name").val(name);
   let email = (user.fields.email) ? user.fields.email : "";
   $("#"+type+" #email").val(email);
@@ -138,7 +139,10 @@ $(".menu-items").click(function(e){
   $('html, body').animate({
       scrollTop: $(e.target.id).offset().top
   }, 500);
-  $(".sidebar").hide();
+  console.log($(".sidebar").css("position"));
+  if($(".sidebar").css("position") == "absolute"){
+    $(".sidebar").hide();
+  }
 });
 
 
@@ -160,6 +164,12 @@ $("#modal-overlay").click(function(e){
     $("#modal-overlay").hide();
   }
 })
+
+setInterval(function(){
+  if($(".sidebar").css("position") == "static"){
+    $(".sidebar").show();
+  }
+}, 500);
 
 // start
 

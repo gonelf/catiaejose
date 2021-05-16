@@ -285,6 +285,12 @@ span.confirmado {
     font-style: italic;
 }
 
+span.confirmado_nao {
+    font-size: 14px;
+    color: firebrick;
+    font-style: italic;
+}
+
 .container-igreja{
   display: flex;
   justify-content: space-between;

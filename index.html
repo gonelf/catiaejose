@@ -66,8 +66,9 @@
       let email = $("#email").val();
       getRecordByEmail(email, function(data){
         if (data.records.length > 0) {
-          deleteCookie("catiaejose.com-users");
+          setCookie("catiaejose.com-users", "", 0);
           setCookie("catiaejose.com-user", JSON.stringify(data.records[0]), 10);
+          // getCookie("catiaejose.com-user");
           window.location.href = "./main.html";
         }
         else {
