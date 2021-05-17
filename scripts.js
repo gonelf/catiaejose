@@ -133,9 +133,10 @@ $("body").on("click", ".confirm", function(e){
 });
 
 $("body").on("click", ".btn-form", function(e){
-  // console.log(e.target.name);
-  formSubmit(e.target.name);
-  return false;
+  if($(this).closest('form')[0].checkValidity()){
+    e.preventDefault();
+    formSubmit(e.target.name);
+  }
 });
 
 $(".menu-items").click(function(e){
@@ -144,7 +145,7 @@ $(".menu-items").click(function(e){
   $('html, body').animate({
       scrollTop: $(e.target.id).offset().top
   }, 500);
-  console.log($(".sidebar").css("position"));
+  // console.log($(".sidebar").css("position"));
   if($(".sidebar").css("position") == "absolute"){
     $(".sidebar").hide();
   }
