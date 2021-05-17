@@ -2,6 +2,8 @@
 
 let alergies_placeholder = "Exemplos: vegetariano, vegan, glúten, lactose, leite, ovo, marisco, peixe, amendoim e frutos secos, soja...";
 $(".alergies").attr("placeholder", alergies_placeholder);
+message = "Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial. Abaixo podes encontrar uma área dedicada à confirmação da tua presença, e também à da tua família, a quem estendemos o convite com todo o gosto!";
+message_solo = "Temos todo o prazer em convidar-te para celebrares connosco este dia tão especial. Abaixo podes encontrar uma área dedicada à confirmação da tua presença.";
 
 // functions
 
@@ -47,6 +49,7 @@ function populateInfo(mainuser, users) {
   // console.log(users);
   $("#welcome").html("Olá, "+mainuser.fields.name+".");
   $("#cards-row").html("");
+  plusone = false;
   $.each(users.reverse(), function(index, user){
     var name = (!user.fields.name || user.fields.name == "") ? ((user.fields.type == 'plusone') ? "Plus One" : "Filho/a") : user.fields.name ;
     var confirmed = (user.fields.confirmed) ? (user.fields.confirmed == "Sim" ? "<span class='confirmado'>Confirmado</span>" : "<span class='confirmado_nao'>Não posso ir</span>") : '<span>&nbsp;</span>';
@@ -57,7 +60,9 @@ function populateInfo(mainuser, users) {
       confirmed+
       '<button type="button" name="button" usertype="'+user.fields.type+'" userid="'+user.id+'" class="'+confirm_btn_class+' confirm">'+confirm_btn+'</button>'+
     '</div>');
+    if (user.fields.type == 'plusone') plusone = true;
   });
+  (!plusone && users.length > 1) ? $("#message").text(message) : $("#message").text(message_solo);
 }
 
 function hideForms() {
