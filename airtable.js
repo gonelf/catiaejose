@@ -1,3 +1,27 @@
+function getActiveFAQs(callback) {
+
+  let formula = "NOT({status} = 'inactive')";
+  var url = "https://api.airtable.com/v0/apptnwzBVBTiGDyNl/FAQs?filterByFormula="+formula;
+
+  $.ajax({
+    url: url,
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader("Authorization", "Bearer keybSe3wdoIEJsvGv");
+    },
+    type: 'GET',
+    dataType: 'json',
+    contentType: 'application/json',
+    processData: false,
+    success: function (data) {
+      callback(data);
+    },
+    error: function(){
+      // console.log("Cannot get data");
+      error();
+    }
+  });
+}
+
 function getRecordByEmail(email, callback) {
 
   let formula = "SEARCH('"+email+"',email)";

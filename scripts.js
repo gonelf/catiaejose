@@ -183,6 +183,16 @@ $("#modal-loading").hide();
 $("#modal-overlay").hide();
 
 let user = JSON.parse(getCookie("catiaejose.com-user"));
-// console.log(user);
-
 var users = start(user);
+
+getActiveFAQs(function(data){
+  console.log(data);
+  $.each(data.records.reverse(), function(key, record){
+    console.log(record.fields.pergunta);
+    let faq = '<div class="faq-card">'+
+      '<h6>'+record.fields.pergunta+'</h6>'+
+      '<p>'+record.fields.resposta+'</p>'+
+    '</div>';
+    $(faq).insertBefore('#ghost');
+  });
+});

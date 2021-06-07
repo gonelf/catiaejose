@@ -255,6 +255,28 @@ a.logout:active{
   flex-wrap: wrap;
 }
 
+.faq-card{
+  background: #FFFFFF;
+  border: 1px solid #C4CFDB;
+  box-shadow: 0px 2px 4px rgba(99, 117, 137, 0.2);
+  border-radius: 4px;
+  padding: 16px;
+  padding-bottom: 24px;
+  flex: 1 1 45%;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.faq-card#ghost{
+  background:none;
+  border: none;
+  box-shadow: none;
+}
+
+.faq-card p{
+  font-size: 14px;
+}
+
 .card{
   background: #FFFFFF;
   border: 1px solid #C4CFDB;
@@ -267,11 +289,17 @@ a.logout:active{
   margin-bottom: 16px;
 }
 
-.card h6{
+.card h6,
+.faq-card h6{
   margin:0;
   font-weight: 800;
   font-size: 16px;
   line-height: 24px;
+}
+
+.faq-card h6{
+  margin-bottom: 16px;
+  color: #C3AD72;
 }
 
 .card button{
@@ -581,11 +609,15 @@ p.loading-txt {
 
 
   .content{
-    padding:0 3em;
+    padding:0 2em;
   }
 
   .header-plant{
     left: -13em;
+  }
+
+  .calligraphy{
+    font-size: 44px;
   }
 
   .container-igreja{
@@ -697,6 +729,11 @@ p.loading-txt {
     display: inline-block;
     margin-right: .5em;
   }
+
+  .faq-card {
+    flex: 1 1 100%;
+    margin-right: 0;
+}
 
 
 }
