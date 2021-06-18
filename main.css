@@ -272,6 +272,8 @@ a.logout:active{
   border: none;
   box-shadow: none;
   height: 0px;
+  padding: 0;
+  margin:0;
 }
 
 .faq-card p{
